@@ -13,6 +13,13 @@ private:
    const double k_eps;
    const int k_N;
 
+   QVector<double> p_hat;
+   int m_nrIncorrectGuesses;
+   double m_bound;
+
+   QObject* m_incorrectGuessesTextField;
+   QObject* m_computedBoundTextField;
+
    /**
     * @brief getProportionOfHeads Flips a coin n times and returns the proportion of heads
     * @param n the number of flips
@@ -21,20 +28,40 @@ private:
     */
    double getProportionOfHeads(int n, bool biased = false);
 
-   QVector<double> p_hat;
+   /**
+    * @brief flipCoins Flips the coins m_n times and computes for each one the proportion of heads and stores it in p_hat.
+    * @param m the number of coins
+    * @param n the number of flips
+    */
+   void flipCoins(int m, int n);
+
+   /**
+    * @brief isCorrectGuess checks whether the assumption that p_hat[0] is the greatest is true or not
+    * @return true if p_hat[0] is greatest, false otherwise
+    */
+   bool isCorrectGuess();
+
+   /**
+    * @brief refresh Clears all the variables from previous runs of the algorithm
+    * @param m the number of elements (coins) to allocate memory for
+    */
+   void refresh(int m);
+
 public slots:
-/**
- * @brief flipCoins Flips the coins m_n times and computes for each one the proportion of heads and stores it in p_hat.
- */
-    flipCoins(int, int);
+   /**
+     * @brief flipCoinsNTimes The main function of this application. It calls the flipCoins(m, n) procedure N times and counts the number of
+     * incorrect guesses, i.e. where the p_hat[0] is not the greatest. This information is sent to GUI and updates the text field.
+    * @param m the number of coins
+    * @param n the number of flips
+     */
+    void flipCoinsNTimes(int, int);
 
 
+    void updateUI();
 public:
     AlgorithmRunner();
-    QVector<double> getP_hat(){
-        return p_hat;
-    }
-
+    void setIncorrectGuessesTextField(QObject *value);
+    void setComputedBoundTextField(QObject *value);
 };
 
 #endif // ALGORITHMRUNNER_H

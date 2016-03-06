@@ -4,8 +4,8 @@ import QtQuick.Controls 1.2
 ApplicationWindow {
     id: applicationWindow
     visible: true
-    width: 640
-    height: 480
+    width: 430
+    height: 170
     title: qsTr("Hello World")
     signal flipCoinsSignal(int m, int n)
 
@@ -92,28 +92,30 @@ ApplicationWindow {
         title: qsTr("Output")
 
         Label {
-            id: label1
+            id: incorrectGuessesLabel
             x: 0
             y: 8
             text: qsTr("Incorrect guesses")
         }
 
         TextField {
-            id: textField1
+            id: incorrectGuessesTextField
+            objectName: "incorrectGuessesTextField"
             x: 109
             y: 5
             placeholderText: qsTr("Text Field")
         }
 
         Label {
-            id: label2
+            id: computedBoundLabel
             x: 0
             y: 49
             text: qsTr("Computed bound")
         }
 
         TextField {
-            id: textField2
+            id: computedBoundTextField
+            objectName: "computedBoundTextField"
             x: 109
             y: 46
             placeholderText: qsTr("Text Field")
