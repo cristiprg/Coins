@@ -118,6 +118,7 @@ ApplicationWindow {
             objectName: "computedBoundTextField"
             x: 109
             y: 46
+            inputMask: qsTr("")
             placeholderText: qsTr("Text Field")
         }
     }

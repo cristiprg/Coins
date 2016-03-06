@@ -39,7 +39,9 @@ void AlgorithmRunner::flipCoinsNTimes(int m, int n){
 
 void AlgorithmRunner::updateUI(){
     m_incorrectGuessesTextField->setProperty("text", m_nrIncorrectGuesses);
-    m_computedBoundTextField->setProperty("text", m_bound);
+    QString boundStr;
+    boundStr.sprintf("%.6f", m_bound);
+    m_computedBoundTextField->setProperty("text", boundStr);
 
 }
 
